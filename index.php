@@ -79,7 +79,7 @@
               <div class="col-md-4 col-sm-12 user-items">
                 <ul class="d-flex justify-content-end list-unstyled">
                   <li>
-                    <a href="signin.html">
+                    <a href="signin.php">
                       <i class="icon icon-user"></i>
                     </a>
                   </li>
@@ -97,6 +97,9 @@
                     <a href="#" class="search-button">
                       <i class="icon icon-search"></i>
                     </a>
+                  </li>
+                  <li>
+                    <a href="./admin/signin.php">Admin</a>
                   </li>
                 </ul>
               </div>
