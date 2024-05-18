@@ -138,8 +138,8 @@
             <div class="container-fluid pt-4 px-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h5 class="mb-0">All Users</h5>
-                                <a href="add-new-user.php">Add Users</a>
+                                <h5 class="mb-0 text-light">All Users</h5>
+                               <h5> <i class="fa fa-plus text-primary"></i> <a href="add-new-user.php">Add Users</a></h5>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-1">
                           </div>     
@@ -154,7 +154,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
-                                            <tr class="table" style="color: aliceblue;"> 
+                                            <tr class="table text-light" > 
                                             <th>Id</th>
                                             <th>Image</th>
                                             <th>Username</th>
