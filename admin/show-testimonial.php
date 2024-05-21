@@ -1,32 +1,3 @@
-<?php
-
-
-
-require_once("./db-con.php");
-require_once "./includes/helpers.php";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   
-
-    $description = $_POST['description'];
-    $client_name = $_POST['client_name'];
-
-   
-    $query = "INSERT INTO `testimonial`(`description`, `client_name`) 
-    VALUES ('$_POST[description]','$_POST[client_name]' ) ";
-
-    if (mysqli_query($con, $query)) {
-        header("Location:show-testimonial.php");
-    }
-
-}
-
-//exit;
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,12 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="message.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Messages</a>
-                    <a href="testimonial.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Testimonials</a>
-                    <a href="categories.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>categories</a>
+                    <a href="testimonial.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Testimonials</a>
+                    <a href="categories.php" class="nav-item nav-link "><i class="fa fa-table me-2"></i>categories</a>
                     <a href="products.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Products</a>
                     <a href="customers.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Customers</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Users</a>
-                    <a href="quotos.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Quotos</a>
+                    <a href="quotos.php" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Quotos</a>
                      </div>
                    
                 </div>
@@ -164,54 +135,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </nav>
             <!-- Navbar End -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row  bg-secondary rounded align-items-center justify-content-center mx-0">
-                   
-                
 
 
-  <!-- add category container -->
-  <div class="container mt-3 p-4">
+          <!-- view categories container -->
+          <div class="row m-0">
+                    <div class=" col-lg-11 mx-auto my-4 bg-secondary p-4">
+            <h3 class="text-light"> <i class="fa fa-eye text-danger"></i> View Testimonials</h3>
+            <hr>
 
-<h3 class="text-light"> <i class="fa fa-plus text-danger"></i> Add Testimonials</h3>
-
-<h3 class="d-flex justify-content-end"> <a href="show-testimonial.php" class=" text-light"><i class="fa fa-eye text-danger"></i> View Testimonials</a></h3>
-
-
-<hr>
-
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class="row">
-
-<div class="col-lg-12">
-<label class="form-label" for="val-username">Description <span class="text-danger">*</span>
-</label>
-<textarea name="description" class="form-control" id="" rows="5" placeholder="Enter here..."></textarea>
-</div>
-<div class="col-lg-6 mt-3 input-group-lg">
-        <label class="form-label" for="val-username">Client Name <span class="text-danger">*</span>
-        </label>
-        <input type="text" class="form-control" id="val-username" name="client_name" placeholder="Enter here..." required>
-    </div>
-
-
-    <div class="col-lg-6 mt-3">
-    <label for=""></label>
-
-<button class="btn btn-light btn-lg mt-2 w-100">Add Testimonials</button>
-    </div>
-</form>
-
-
-
-
-</div>
+            <div class="d-flex justify-content-end">
+                <h3><a href="./testimonial.php" class="text-light"><i class="fa fa-plus text-danger"></i> Add Testimonials</a></h3>
             </div>
 
+            <div class="table-responsive mt-2">
+                <table class="table table-striped table-bordered zero-configuration">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Description</th>
+                            <th>Clinet Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    <?php
+     require_once("./db-con.php");
+$select = "SELECT * FROM testimonial";
+$result = mysqli_query($con, $select);
 
-</div>
-</div>
+if (mysqli_num_rows($result) > 0) {
 
-            
+    while ($row = mysqli_fetch_assoc($result)) {
+
+
+?>
+
+
+
+                    <tr>
+                            <td><?php echo $row['id'] ?></td>
+                            <td><?php echo $row['description'] ?></td>
+                            <td><?php echo $row['client_name'] ?></td>
+                           <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-info text-white dropdown-toggle" data-toggle="dropdown">Actions</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="edit-product.php?id=<?= $row['id'] ?>">Edit</a>
+                                        <a class="dropdown-item" href="delete-product.php?id=<?= $row['id'] ?>">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <?php
+                            }
+                        }
+
+                        ?>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        </div>
+
+        </div>
+        <!-- Content End -->
+
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
