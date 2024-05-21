@@ -139,29 +139,147 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>Hii</h3>
+                    <div class="col-md-12 ">
+                      
+        <!-- view categories container -->
+        <div class="container">
+            <h3 class="text-light"> <i class="fa fa-plus text-danger"></i> Add Products</h3>
+
+           
+
+            <div class="col-8">
+            <?php
+
+if (!empty($_SESSION['success'])) {
+    $msg = $_SESSION['success'];
+    echo " <div class='alert alert-success alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Congratulation! </strong> $msg</div>";
+}
+unset($_SESSION['success']);
+
+
+if (!empty($_SESSION['error'])) {
+    $msg = $_SESSION['error'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['error']);
+
+if (!empty($_SESSION['imgErr'])) {
+    $msg = $_SESSION['imgErr'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['imgErr']);
+
+?>
+            </div>
+          
+            <div class="d-flex justify-content-end">
+                <h3><a href="show-products.php" class="text-light"><i class="fa fa-eye text-danger"></i> View Proudcts</a></h3>
+            </div>
+            <hr>
+            <div class="form-container">
+                <form action="./add-products-query.php" method="POST" enctype="multipart/form-data" class="row">
+
+                    <div class="col-lg-4 mb-2">
+                        <label class="form-label" for="name">Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter here..." required>
+                    </div>
+
+
+                    <div class="col-lg-4 mb-2">
+                        <label class="form-label" for="unit_price">Unit Price <span class="text-danger">*</span>
+                        </label>
+                        <input type="number" class="form-control" id="unit_price" name="unit_price" placeholder="Enter here..." required>
+                    </div>
+
+                    <div class="col-lg-4 mb-2">
+                    <label class="form-label" for="color">Color <span class="text-danger">*</span>
+                        </label>
+                    <select name="color" id="color" class="form-control bg-dark">
+                        
+                           <option value="" disabled selected>Select Color...</option>
+                           <option>Red</option>
+                           <option value="female">Green</option>
+                           <option value="other">White</option>
+                           <option value="other">Black</option>
+                           <option value="other">Yellow</option>
+                           <option value="other">Pink</option>
+                           <option value="other">Gray</option>
+                           
+                        
+                    </select>
+                    </div>
+
+
+
+                    <div class="col-lg-4 mb-2">
+                        <label class="form-label" for="category">Category <span class="text-danger">*</span>
+                        </label>
+                        <select class="form-control bg-dark" name="category" id="category">
+                        <option value="-1">Choose here...</option>
+                            <!-- fetch category from category table -->
+                            <?php
+                            require_once "./db-con.php";
+
+                            $select = "SELECT * FROM categories";
+                            $result = mysqli_query($con, $select);
+
+                            if (mysqli_num_rows($result) > 0) {
+
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <option value="<?php echo $row['id'] ?>"> <?php echo $row['category'] ?>  </option>
+
+                            <?php  } } ?>
+                        </select>
+                    </div>
+
+
+
+                    <div class="col-lg-4 ">
+                        <label class="form-label" for="quantity">Quantity <span class="text-danger">*</span>
+                        </label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter here..." required>
+                    </div>
+
+
+                    <div class="col-lg-4 mb-2">
+                        <label class="form-label" for="image">Image <span class="text-danger">*</span>
+                        </label>
+                        <input type="file" class="form-control bg-dark" id="image" name="image" placeholder="Enter here..." required>
+                    </div>
+
+                    <div class="col-lg-12 mb-2">
+                        <label class="form-label" for="val-username">Description <span class="text-danger">*</span>
+                        </label>
+                        <textarea name="description" class="form-control" id="" rows="5"></textarea>
+                    </div>
+
+                    <div class="offset-8 col-lg-4 mb-2">
+                        <label for=""></label>
+
+                        <button class="btn btn-danger text-white btn-lg mt-2 w-100"> <i class="fa fa-plus"></i> Add Product</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
                     </div>
                 </div>
             </div>
             <!-- Blank End -->
 
 
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
+          
         </div>
         <!-- Content End -->
 

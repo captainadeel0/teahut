@@ -153,8 +153,26 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Total <br>   Products   </p>
+                                <?php
+                                require_once("./db-con.php");
+                                $select = "SELECT * FROM products";
+                                
+                                $result = mysqli_query($con, $select);
+                                
+                                if($customers_total = mysqli_num_rows($result))
+                                
+                                {
+                                
+                                echo ' <h6 class="mb-0">'.$customers_total.'</h6>';
+                                }
+                                else
+                                 {
+                                    echo ' <h6 class="mb-0">No data found</h6>';
+                                 }
+                              
+                                  ?>
+                               
                             </div>
                         </div>
                     </div>
