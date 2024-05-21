@@ -66,7 +66,7 @@
                     <a href="products.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Products</a>
                     <a href="customers.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Customers</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Users</a>
-                    
+                    <a href="quotos.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Quotos</a>
                      </div>
                    
                 </div>
@@ -129,7 +129,9 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
+                            <a href="../signup.php" class="dropdown-item">CoverStyle</a>
                             <a href="signin.php" class="dropdown-item">Log Out</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -153,18 +155,20 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total <br>   Products   </p>
+                            <p class="mb-2">Total &nbsp; Products </p>
+                            
+                                
                                 <?php
                                 require_once("./db-con.php");
                                 $select = "SELECT * FROM products";
                                 
                                 $result = mysqli_query($con, $select);
                                 
-                                if($customers_total = mysqli_num_rows($result))
+                                if($categories_total = mysqli_num_rows($result))
                                 
                                 {
                                 
-                                echo ' <h6 class="mb-0">'.$customers_total.'</h6>';
+                                echo ' <h6 class="mb-0">'.$categories_total.'</h6>';
                                 }
                                 else
                                  {

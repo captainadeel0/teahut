@@ -66,7 +66,7 @@
                     <a href="products.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Products</a>
                     <a href="customers.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Customers</a>
                     <a href="user.php" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Users</a>
-                    
+                    <a href="quotos.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Quotos</a>
                      </div>
                    
                 </div>

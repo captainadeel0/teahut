@@ -24,7 +24,7 @@
 		<div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
 		
 		
-		<div class="inner">                      
+		<div class="inner rounded-3">                      
 
 				<form action="./signin-query.php" method="post">
 					<h3 class="mt-5">Registration Form</h3>
@@ -48,7 +48,7 @@
 					</button>
                     <p class=" mt-2 offset-2">Don't have an account!<span><a id="login" href="signup.php"><b> Register</b></a></span> </p>
 				</form>
-				<div class="image-holder">
+				<div class="image-holder rounded-3">
 					<img src="images/login-pic.jpg" alt="">
 				</div>
 			</div>

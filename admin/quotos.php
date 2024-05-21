@@ -1,3 +1,32 @@
+<?php
+
+
+
+require_once("./db-con.php");
+require_once "./includes/helpers.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   
+
+    $quotos = $_POST['quotos'];
+    $auther = $_POST['auther'];
+
+   
+    $query = "INSERT INTO `quotos`(`quotos`, `auther`) 
+    VALUES ('$_POST[quotos]','$_POST[auther]' ) ";
+
+    if (mysqli_query($con, $query)) {
+        header("Location:show-quotos.php");
+    }
+
+}
+
+//exit;
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,12 +90,12 @@
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="message.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Messages</a>
-                    <a href="testimonial.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Testimonials</a>
+                    <a href="testimonial.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Testimonials</a>
                     <a href="categories.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>categories</a>
                     <a href="products.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Products</a>
                     <a href="customers.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Customers</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Users</a>
-                    <a href="quotos.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Quotos</a>
+                    <a href="quotos.php" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Quotos</a>
                      </div>
                    
                 </div>
@@ -136,26 +165,59 @@
             </nav>
             <!-- Navbar End -->
 
-            <div class="col-sm-12 m-4 col-xl-10">
-                <div class="bg-secondary rounded h-100 p-4">
-                    <h6 class="mb-4">Testimonial</h6>
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="testimonial-item text-center">
-                            <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p>Profession</p>
-                            <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p>Profession</p>
-                            <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Blank Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row  bg-secondary rounded align-items-center justify-content-center mx-0">
+                   
+                
+
+
+  <!-- add category container -->
+  <div class="container mt-3 p-4">
+
+<h3 class="text-light"> <i class="fa fa-plus text-danger"></i> Add Quotos</h3>
+
+<h3 class="d-flex justify-content-end"> <a href="show-quotos.php" class=" text-light"><i class="fa fa-eye text-danger"></i> View Quotos</a></h3>
+
+
+<hr>
+
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class="row">
+
+<div class="col-lg-12">
+<label class="form-label" for="val-username">Quotos <span class="text-danger">*</span>
+</label>
+<textarea name="quotos" class="form-control" id="" rows="5" placeholder="Enter here..."></textarea>
+</div>
+<div class="col-lg-6 mt-3 input-group-lg">
+        <label class="form-label" for="val-username">Auther <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" id="val-username" name="auther" placeholder="Enter here..." required>
+    </div>
+
+
+    <div class="col-lg-6 mt-3">
+    <label for=""></label>
+
+<button class="btn btn-light btn-lg mt-2 w-100">Add Category</button>
+    </div>
+</form>
+
+
+
+
+</div>
             </div>
+
+
+</div>
+</div>
+
             
+        </div>
+        <!-- Content End -->
+
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
