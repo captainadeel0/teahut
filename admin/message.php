@@ -145,46 +145,36 @@
                                 <h6 class="mb-0">Messages</h6>
                                 <a href="">Show All</a>
                             </div>
+
+                            <?php
+     require_once("./db-con.php");
+$select = "SELECT * FROM contact_us";
+$result = mysqli_query($con, $select);
+
+if (mysqli_num_rows($result) > 0) {
+
+    while ($row = mysqli_fetch_assoc($result)) {
+
+
+?>
+                            
                             <div class="d-flex align-items-center border-bottom py-3">
                                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
+            <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0"><?php echo $row['name'] ?></h6>
                                         <small>15 minutes ago</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                    <span><?php echo $row['message'] ?></span>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
+                           
+                            
+                            <?php
+                            }
+                        }
+
+                        ?>
                         </div>
                     </div>
                     

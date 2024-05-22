@@ -3,14 +3,11 @@
 
 
 require_once("./db-con.php");
-require_once "./includes/helpers.php";
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
    
     $query = "INSERT INTO `contact_us`(`name`, `email`, `message`) 
     VALUES ('$_POST[name]','$_POST[email]', '$_POST[message]' ) ";
@@ -237,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <div class="section-header">
                 <h2 class="section-title">Send us a message</h2>
               </div>
-              <form  action="./contact_query.php" method="POST" class="contact-form">
+              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class="row">
                 <div class="form-item">
                   <input type="text" minlength="2" name="name" placeholder="Name" class="u-full-width bg-light" required>
                   <input type="email" name="email" placeholder="E-mail" class="u-full-width bg-light" required>
