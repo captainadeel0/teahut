@@ -208,39 +208,39 @@
                                             </div> -->
                                         </div>
                                     </div>
+
+<?php
+     require_once("./db-con.php");
+     $select = "SELECT * FROM contact_us";
+     $result = mysqli_query($con, $select);
+     
+     if (mysqli_num_rows($result) > 0) {
+     
+         while ($row = mysqli_fetch_assoc($result)) {
+     
+?>
+
                                     <div class="email-list m-t-15">
                                         <div class="message">
-                                            <a href="email-read.html">
+                                            <a href="email-read.php?id=<?= $row['id'] ?>">
                                                 <div class="col-mail col-mail-1">
                                                     <div class="email-checkbox">
                                                         <input type="checkbox" id="chk2">
                                                         <label class="toggle" for="chk2"></label>
                                                     </div><span class="star-toggle ti-star"></span>
                                                 </div>
-                                                <div class="col-mail col-mail-2">
-                                                    <div class="subject">Ingredia Nutrisha, A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture</div>
-                                                    <div class="date">11:49 am</div>
+                                                <div class="d-flex justify-content-between">
+                                                  
+                                                    <div class=""><?php  echo $row['message'] ?></div>
+                                                    <div class=""><?php  echo $row['send_time'] ?></div>
                                                 </div>
                                             </a>
                                         </div>
                                        
                                         
+                                        <?php  } }?>
                                         
-                                        <div class="message unread">
-                                            <a href="email-read.html">
-                                                <div class="col-mail col-mail-1">
-                                                    <div class="email-checkbox">
-                                                        <input type="checkbox" id="chk9">
-                                                        <label class="toggle" for="chk9"></label>
-                                                    </div><span class="star-toggle ti-star"></span>
-                                                </div>
-                                                <div class="col-mail col-mail-2">
-                                                    
-                                                    <div class="subject">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of</div>
-                                                    <div class="date">11:49 am</div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                
                                        
                                     <!-- panel -->
                                     <!-- <div class="row">

@@ -236,9 +236,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               </div>
               <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class="row">
                 <div class="form-item">
-                  <input type="text" minlength="2" name="name" placeholder="Name" class="u-full-width bg-light" required>
-                  <input type="email" name="email" placeholder="E-mail" class="u-full-width bg-light" required>
-                  <textarea class="u-full-width bg-light" name="message" placeholder="Message" style="height: 180px;" required></textarea>
+                <label class="form-label" for="name">Name <span class="text-danger">*</span></label>                                       
+                  <input type="text" minlength="2" name="name" placeholder="Enter here..." class="u-full-width bg-light" required>
+               <label class="form-label" for="email">Eamil <span class="text-danger">*</span></label>
+                  <input type="email" name="email" placeholder="Enter here..." class="u-full-width bg-light" required>
+               <label class="form-label" for="subject">Subject <span class="text-danger">*</span></label>
+                  <input type="text" minlength="2" name="subject" placeholder="Enter here..." class="u-full-width bg-light" required>
+              <label class="form-label" for="message">Message<span class="text-danger">*</span></label>
+                  <textarea class="u-full-width bg-light" name="message" placeholder="Enter here..." style="height: 180px;" required></textarea>
                 </div>
                 <label>
                   <input type="checkbox" required>

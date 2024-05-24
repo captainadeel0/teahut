@@ -64,8 +64,8 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-envelope me-2"></i>Emails</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="email-inbox.php" class="dropdown-item">Inbox</a>
-                            <a href="#" class="dropdown-item">Read</a>
-                            <a href="" class="dropdown-item">Compose</a>
+                            <a href="email-read.php" class="dropdown-item">Read</a>
+                            <a href="email-compose.php" class="dropdown-item">Compose</a>
                             
                         </div>
                     </div>
