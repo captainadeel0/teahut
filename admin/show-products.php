@@ -20,6 +20,24 @@
             <div class="d-flex justify-content-end">
                 <h3><a href="./products.php" class="text-light"><i class="fa fa-plus text-danger"></i>Add Products</a></h3>
             </div>
+            
+            <?php
+                 if (isset($data) && $data['errors'] === true) { 
+                    ?>
+                <div class="alert alert-danger mt-2 credErr"><?php echo $data['result'] ?></div>
+            <?php
+             } 
+            ?>
+
+
+            <?php 
+            if (isset($data) && $data['errors'] === false) { 
+                ?>
+                <div class="alert alert-success mt-2 credErr"> <b>Congratulations! </b> Operation Performed Successfully...</div>
+            <?php 
+        }
+         ?>
+
 
             <div class="table-responsive mt-2">
                 <table class="table table-striped table-bordered zero-configuration">

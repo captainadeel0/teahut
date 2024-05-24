@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -24,36 +28,36 @@
             <h3 class="text-light"> <i class="fa fa-plus text-danger"></i> Add Products</h3>
 
            
+            <?php
+                 if (isset($data) && $data['errors'] === true) { 
+                    ?>
+                <div class="alert alert-danger mt-2 credErr"><?php echo $data['result'] ?></div>
+            <?php
+             } 
+            ?>
+
+
+            <?php 
+            if (isset($data) && $data['errors'] === false) { 
+                ?>
+                <div class="alert alert-success mt-2 credErr"> <b>Congratulations! </b> Operation Performed Successfully...</div>
+            <?php 
+        }
+         ?>
+
+
+
+
+
+
 
             <div class="col-8">
-            <?php
 
-if (!empty($_SESSION['success'])) {
-    $msg = $_SESSION['success'];
-    echo " <div class='alert alert-success alert-dismissible fade show credErr'>
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
-        </button> <strong>Congratulation! </strong> $msg</div>";
-}
-unset($_SESSION['success']);
+            
+           
 
 
-if (!empty($_SESSION['error'])) {
-    $msg = $_SESSION['error'];
-    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
-        </button> <strong>Warning! </strong> $msg</div>";
-}
-unset($_SESSION['error']);
 
-if (!empty($_SESSION['imgErr'])) {
-    $msg = $_SESSION['imgErr'];
-    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
-        </button> <strong>Warning! </strong> $msg</div>";
-}
-unset($_SESSION['imgErr']);
-
-?>
             </div>
           
             <div class="d-flex justify-content-end">

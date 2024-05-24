@@ -62,6 +62,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <h3 class="text-light"> <i class="fa fa-plus text-primary"></i> Add Categories</h3>
 
+
+                <?php
+                 if (isset($data) && $data['errors'] === true) { 
+                    ?>
+                <div class="alert alert-danger mt-2 credErr"><?php echo $data['result'] ?></div>
+            <?php
+             } 
+            ?>
+
+
+            <?php 
+            if (isset($data) && $data['errors'] === false) { 
+                ?>
+                <div class="alert alert-success mt-2 credErr"> <b>Congratulations! </b> Operation Performed Successfully...</div>
+            <?php 
+        }
+         ?>
+
+
+
+
                <h3 class="d-flex justify-content-end"> <a href="show-categories.php" class=" text-light"><i class="fa fa-eye text-primary"></i> View Categories</a></h3>
            
 

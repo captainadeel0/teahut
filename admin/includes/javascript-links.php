@@ -11,6 +11,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
-</html>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".credErr").hide();
+            }, 3000);
+
+        })
+    </script>

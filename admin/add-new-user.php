@@ -23,6 +23,31 @@
                             </div>
                             <hr>
                             <div class="d-flex align-items-center border-bottom py-1">
+
+                             <?php
+                    
+           
+                  
+                    if (!empty($_SESSION['error'])) {
+                        $msg = $_SESSION['error'];
+                        echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+                        </button> <strong>Warning! </strong> $msg</div>";
+                    }
+                    unset($_SESSION['error']);
+
+
+                    if (!empty($_SESSION['invalid'])) {
+                        $msg = $_SESSION['invalid'];
+                        echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+                        </button> <strong>Warning! </strong> $msg</div>";
+                    }
+                    unset($_SESSION['invalid']);
+
+                
+                    
+                    ?>
                                
                                 <div class="form-container">
                                     <form action="./add-user-query.php" method="POST" enctype="multipart/form-data" class="row">

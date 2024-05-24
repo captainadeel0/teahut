@@ -21,15 +21,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             VALUES ('$_POST[name]','$_POST[unit_price]' , '$_POST[color]' ,'$_POST[category]','$_POST[quantity]','$name','$_POST[description]') ";
     
             if (mysqli_query($con, $query)) {
-                header("Location:show-products.php");
+                header("Location:products.php");
             }
             else{
-                echo "<div class='alert alert-danger mt-2 uploadingErr'>Query Failed</div>";
+                echo "<div class='alert alert-danger mt-2 credErr'>Query Failed</div>";
             }
         }
         else{
             
-          echo  "<div class='alert alert-danger mt-2 uploadingErr'> $data[result]</div>";
+          echo  "<div class='alert alert-danger mt-2 credErr'> $data[result]</div>";
 
         }
 

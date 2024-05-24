@@ -29,6 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -46,6 +47,30 @@
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <?php
+                    
+                    session_start();
+                      
+                        if (!empty($_SESSION['error'])) {
+                            $msg = $_SESSION['error'];
+                            echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+                            </button> <strong>Warning! </strong> $msg</div>";
+                        }
+                        unset($_SESSION['error']);
+    
+    
+                        if (!empty($_SESSION['invalid'])) {
+                            $msg = $_SESSION['invalid'];
+                            echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+                            </button> <strong>Warning! </strong> $msg</div>";
+                        }
+                        unset($_SESSION['invalid']);
+    
+                    
+                        
+                        ?>
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         
 				<form action="./signin-query.php" method="post">
